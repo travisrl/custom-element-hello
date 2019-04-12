@@ -39,6 +39,6 @@ export class AppModule {
   	ngDoBootstrap() {
     	const el = createCustomElement(AppComponent, 
     		{ injector: this.injector });
-    	customElements.define('hello-world', el);
+    	customElements.define('custom-element-test', el);
 	}
 }

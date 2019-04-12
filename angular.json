@@ -111,6 +111,24 @@
             ]
           }
         }
+      },
+      "elements": {
+          "root": "projects/elements/",
+          "architect": {
+            "build": {
+              "options": {
+                "scripts": [{
+                  "input": "node_modules/document-register-element/build/document-register-element.js"
+                }]
+              },
+              "configurations": {
+                "production": {
+                  "outputHashing": "none",
+                }
+              }
+            }
+          }
+        }
       }
     },
     "custom-element-test-e2e": {

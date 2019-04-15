@@ -1,13 +1,13 @@
 # hello-world-widget
-MicroApplication and Widget Example for OpenDash360.
+MicroApplication Widget for OpenDash360.
 =======
 
-This project creates an Angular-driven Hello World application packaged as a custom element ready to import to the OpenDash360 platform.
+This project creates an Angular-driven Hello World application with widget packaged as a custom element ready to import to the OpenDash360 platform.
 
 OpenDash360 is a framework neutral developer playground, allowing any type of application (from Angular to React, PHP to Java) to be easily imported and used. Applications must be packaged as an Angular Custom Element and configured. Read more at opendash360.com
 
 ## Application Example
-For our example we've created a basic Angular-driven Hello World app using Google's Material Design components. Review /src/app/app.component.html for markup or check out https://material.angular.io.
+For our example we've created a basic Angular-driven Hello World app using Google's Material Design components. Review `/src/app/app.component.html` for markup or check out https://material.angular.io.
 
 ## Package Custom Element
 Once we have our application ready, we will need to create an Angular Custom Element. We'll walk through exporting your project in these steps:
@@ -18,11 +18,16 @@ Once we have our application ready, we will need to create an Angular Custom Ele
 ### Install Dependencies
 #### Angular Custom Elements Module
 To build a custom element, we'll need access to the Angular Custom Elements module:
+
 `npm install @angular/elements`
+
 Then import `createCustomElement` from the module (in our case app.module.ts):
+
 `import {createCustomElement} from '@angular/elements';`
+
 #### Custom Build Script
 Later in the project we use these to optimize the rendered output:
+
 `npm install fs-extra concat`
 
 ### Export Component
@@ -111,8 +116,6 @@ const concat = require('concat');
 })()
 ```
 *Replace references to `your-app-name` shown above with your app.*
-
-
 
 
 ## MicroApplication Configuration

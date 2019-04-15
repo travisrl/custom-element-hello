@@ -1,6 +1,6 @@
 module.exports = {
   output: {
-    jsonpFunction: 'webpackJsonpYourAppName',
+    jsonpFunction: 'webpackJsonpHelloWorldWidget',
     library: 'hello-world-widget'
   }
 };

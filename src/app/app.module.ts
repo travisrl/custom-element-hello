@@ -19,21 +19,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		MatCheckboxModule,
 		MatInputModule
 	],
+	providers: [],
+	bootstrap: [],
+	entryComponents: [ AppComponent ],
 	exports: [
 		MatButtonModule,
 		MatCheckboxModule,
 		MatInputModule
-	],
-	providers: [],
-	bootstrap: [],
-	entryComponents: [AppComponent]
+	]
 })
 
 export class AppModule {
  	constructor(private injector: Injector) {
- 		if (!customElements.get('custom-elements-widget')) {
+ 		if (!customElements.get('hello-world-widget')) {
  			const helloWorldElement = createCustomElement(AppComponent, {injector});
- 			customElements.define('custom-elements-widget', helloWorldElement);
+ 			customElements.define('hello-world-widget', helloWorldElement);
  		}
  	}
  	ngDoBootstrap(){} 

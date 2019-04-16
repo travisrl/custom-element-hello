@@ -1,15 +1,13 @@
-MicroApplication Widget for OpenDash360
+Hello World Angular Custom Element
 =======
 
-This project creates an Angular-driven Hello World application with widget packaged as an Angular custom element ready to import to the OpenDash360 platform.
-
-OpenDash360 is a framework neutral developer playground, allowing any type of application (from Angular to React, PHP to Java) to be easily imported and used. Applications must be packaged as an Angular Custom Element and configured. Read more at opendash360.com
+This project creates an Angular-driven Hello World application packaged as an Angular custom element.
 
 # Application Example
-For our example we've created a basic Angular-driven Hello World app using Google's Material Design components. Review `/src/app/app.component.html` for markup or check out https://material.angular.io.
+For our example we created a basic Angular-driven Hello World app using Google's Material Design components. Review `/src/app/app.component.html` for markup or check out https://material.angular.io.
 
 # Create Custom Element
-Once we have our application ready, we will need to create an Angular Custom Element. We'll walk through exporting your project in these steps:
+Once our application is ready, we need to create an Angular Custom Element. We'll walk through exporting your project in these steps:
 * Install Dependencies
 * Export Component
 * Generate Custom Element
@@ -26,17 +24,15 @@ Install Angular Builders Custom Webpack:
 
 `npm i -D @angular-builders/custom-webpack`
 
-Install build script optimization:
-
-`npm install fs-extra concat`
-
-
 Install the Angular Custom Webpack Builder:
 
 `npm install @angular-builders/custom-webpack`
 
+Install optimization packages:
+
+`npm install fs-extra concat`
+
 ## Export Component
-Angular needs any components you want to be created dynamically to be declared in the module's `entryComponents` array.
 
 ### entryComponents Declaration
 In our module file, we add our root component and clear `bootstrap` as shown:
@@ -53,7 +49,7 @@ import { AppComponent } from './app.component';
 export class AppModule { }
 ```
 
-### Custom Element Delcaration
+### Custom Element Declaration
 Manually trigger bootstrapping via `ngDoBootstrap` in our `app.module.ts` like shown:
 ```javascript
 import { Injector } from '@angular/core';
@@ -102,7 +98,6 @@ module.exports = {
 *Replace references to `helloWorldWidget` with your app.*
 
 ## Generate Custom Element
-Create a script outputting a single file named `your-app-name.js` in an `/elements` folder in your project directory.
 
 ### Write Build Script
 Create a new file in your project directory named `build-script.js` with:
@@ -111,24 +106,26 @@ const fs = require('fs-extra');
 const concat = require('concat');
 (async function build() {
   const files = [
-    './dist/your-app-name/runtime.js',
-    './dist/your-app-name/polyfills.js',
-    './dist/your-app-name/main.js',
+    './dist/hello-world-widget/runtime.js',
+    './dist/hello-world-widget/polyfills.js',
+    './dist/hello-world-widget/main.js',
   ]
   await fs.ensureDir('elements')
-  await concat(files, 'elements/your-app-name.js');
+  await concat(files, 'elements/hello-world-widget.js');
 })()
 ```
-*Replace references to `your-app-name` shown above with your app.*
+*Replace references to `hello-world-widget` shown above with your app.*
 
 #### Update package.json
 Add the build script to your project in the `package.json` with this addition:
+
 `"build:element": "ng build --prod --output-hashing none && node build-script.js"`
 
 #### Export Custom Element
 Generate the concatenated JS file containing your application as a custom element with:
-`npm run build:element`
-This file is located in the /dist folder of your project named as defined above.
 
+`npm run build:element`
+
+This file is located in the /dist folder of your project named as defined above.
 
 # MicroApplication Configuration

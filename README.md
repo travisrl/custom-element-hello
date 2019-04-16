@@ -1,7 +1,7 @@
-MicroApplication Widget for OpenDash360.
+MicroApplication Widget for OpenDash360
 =======
 
-This project creates an Angular-driven Hello World application with widget packaged as a custom element ready to import to the OpenDash360 platform.
+This project creates an Angular-driven Hello World application with widget packaged as an Angular custom element ready to import to the OpenDash360 platform.
 
 OpenDash360 is a framework neutral developer playground, allowing any type of application (from Angular to React, PHP to Java) to be easily imported and used. Applications must be packaged as an Angular Custom Element and configured. Read more at opendash360.com
 

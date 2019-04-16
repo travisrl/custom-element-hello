@@ -133,7 +133,7 @@ Create a manifest following the sample JSON below:
 ```json
 "title":"Hello World Widget {
     "app": {
-        "tag": "custom-app",
+        "tag": "hello-world-widget",
         "bootstrapModule": "app/hello-world-widget.js",
         "iconImage": "resources/hello-world-widget.png",
         "version": "1.0.0"

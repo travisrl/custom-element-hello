@@ -127,5 +127,3 @@ Generate the concatenated JS file containing your application as a custom elemen
 `npm run build:element`
 
 This file is located in the /dist folder of your project named as defined above.
-
-# MicroApplication Configuration

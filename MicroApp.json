@@ -1,0 +1,23 @@
+"title":"Hello World Widget {
+    "app": {
+        "tag": "hello-world-widget",
+        "bootstrapModule": "app/hello-world-widget.js",
+        "iconImage": "resources/hello-world-widget.png",
+        "version": "1.0.0"
+    },
+    "widgets": [
+        {
+            "tag": "hello-world-widget",
+            "bootstrapModule": "widgets/hello-world-widget/hello-world-widget.module.js",
+            "title": "Hello World Widget",
+            "iconImage": "resouces/custom-widget-icon.png",
+            "version": 1.0.0"
+        }
+    ],
+    "permissions": [
+        "Create",
+        "Read",
+        "Update",
+        "Delete"
+    ]
+}

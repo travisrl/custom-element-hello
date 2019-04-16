@@ -124,3 +124,35 @@ Generate the concatenated JS file containing your application as a custom elemen
 `npm run build:element`
 
 This file is located in the /dist folder of your project named as defined above.
+
+# Create MicroApplication
+MicroApplications and widgets are uploaded to OpenDash360 via MicroApp Deployment. Administrators must then approve your app before it's active.
+
+## Define MicroApp.json
+Create a manifest following the sample JSON below:
+```javascript
+"title":"Hello World Widget {
+    "app": {
+        "tag": "custom-app",
+        "bootstrapModule": "app/hello-world-widget.js",
+        "iconImage": "resources/hello-world-widget.png",
+        "version": "1.0.0"
+    },
+    "widgets": [
+        {
+            "tag": "hello-world-widget",
+            "bootstrapModule": "widgets/hello-world-widget/hello-world-widget.module.js",
+            "title": "Hello World Widget",
+            "iconImage": "resouces/custom-widget-icon.png",
+            "version": 1.0.0"
+        }
+    ],
+    "permissions": [
+        "Create",
+        "Read",
+        "Update",
+        "Delete"
+    ]
+}
+```
+The end result project with manifest above should then be deployed to the file system.

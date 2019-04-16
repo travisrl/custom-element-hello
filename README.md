@@ -17,6 +17,7 @@ Install Angular Elements:
 `npm install @angular/elements`
 
 Then import `createCustomElement` from the module (in our case `app.module.ts`):
+
 `import {createCustomElement} from '@angular/elements';`
 
 Install Angular Builders Custom Webpack:

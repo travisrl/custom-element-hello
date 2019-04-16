@@ -8,35 +8,38 @@ OpenDash360 is a framework neutral developer playground, allowing any type of ap
 # Application Example
 For our example we've created a basic Angular-driven Hello World app using Google's Material Design components. Review `/src/app/app.component.html` for markup or check out https://material.angular.io.
 
-# Package Custom Element
+# Create Custom Element
 Once we have our application ready, we will need to create an Angular Custom Element. We'll walk through exporting your project in these steps:
 * Install Dependencies
 * Export Component
 * Generate Custom Element
 
 ## Install Dependencies
-### Angular Custom Elements Module
-To build a custom element, we'll need access to the Angular Custom Elements module:
-
+Install Angular Elements:
 `npm install @angular/elements`
 
-Then import `createCustomElement` from the module (in our case app.module.ts):
+Then import `createCustomElement` from the module (in our case `app.module.ts`):
 
 `import {createCustomElement} from '@angular/elements';`
 
-Install Angular Builders Custom Webpack
+Install Angular Builders Custom Webpack:
+
 `npm i -D @angular-builders/custom-webpack`
 
-### Custom Build Script
-Later in the project we use these to optimize the rendered output:
+Install build script optimization:
 
 `npm install fs-extra concat`
 
+
+Install the Angular Custom Webpack Builder:
+
+`npm install @angular-builders/custom-webpack`
+
 ## Export Component
-Angular needs any components you want to be created dynamically to be declared in the module's entryComponents array.
+Angular needs any components you want to be created dynamically to be declared in the module's `entryComponents` array.
 
 ### entryComponents Declaration
-In your module file, add your root component to this array and declare if necessary. Also empty `bootstrap` as shown:
+In our module file, we add our root component and clear `bootstrap` as shown:
 ```javascript
 import { createCustomElement } from '@angular/elements';
 import { AppComponent } from './app.component';
@@ -51,7 +54,7 @@ export class AppModule { }
 ```
 
 ### Custom Element Delcaration
-Your component's Javascript should automatically register itself after checking if it's defined. We'll also need to manually trigger bootstrapping via `ngDoBootstrap` in the module:
+Manually trigger bootstrapping via `ngDoBootstrap` in our `app.module.ts` like shown:
 ```javascript
 import { Injector } from '@angular/core';
 export class AppModule {
@@ -64,14 +67,10 @@ export class AppModule {
   ngDoBootstrap(){}
 }
 ```
-
-### Angular Custom Webpack Builder
-Next we build a custom webpack and redefine the webpackJsonp variable to avoid multiple custom elements colliding. Begin by installing the Angular Custom Webpack Builder:
-
-`npm install @angular-builders/custom-webpack`
+*Replace mentions of `hello-world-widget` to your application*
 
 #### Update Project Builder
-Inside your project's `angular.json` find where your builder is defined. Replace the default builder with a custom webpack builder with the following options:
+In your `angular.json` replace the default builder with a custom webpack builder such as:
 ```javascript
 "architect": {
   "build": {
@@ -88,25 +87,25 @@ Inside your project's `angular.json` find where your builder is defined. Replace
   }
 }
 ```
-Only add the above to the your builder; do not replace it entirely.
+*Only add the above to the your builder; do not replace it entirely.*
 
 ### Create Custom webpackJsonp
-This `extra-webpack.config.js` file we referenced above will provide a custom definition for the webpackJsonp variable. In the same directory as your `angular.json`, create a new file named `extra-webpack.config.js` with these contents:
+Create a file named `extra-webpack.config.js` in the same directory as your `angular.json` with:
 ```javascript
 module.exports = {
   output: {
-    jsonpFunction: 'webpackJsonpYourAppName',
-    library: 'yourAppName'
+    jsonpFunction: 'webpackJsonpHelloWorldWidget',
+    library: 'helloWorldWidget'
   }
 };
 ```
-*Replace references to `YourAppName` shown above with the name of your app.*
+*Replace references to `helloWorldWidget` with your app.*
 
 ## Generate Custom Element
-Our desired end result is a single Javascript file defining our custom element. By default Angular produces multiple Javascript files that we need to concatenate and consolidate. To achieve our goal we'll create a script that outputs a single file named your-app-name.js in an `/elements` folder in your project directory. This JS file defines your custom element when linked in the source of a script tag.
+Create a script outputting a single file named `your-app-name.js` in an `/elements` folder in your project directory.
 
 ### Write Build Script
-Create a new file in your project directory named `build-script.js` with the following:
+Create a new file in your project directory named `build-script.js` with:
 ```javascript
 const fs = require('fs-extra');
 const concat = require('concat');
@@ -123,13 +122,13 @@ const concat = require('concat');
 *Replace references to `your-app-name` shown above with your app.*
 
 #### Update package.json
-Add the build script to your project in the `package.json` by including this line:
+Add the build script to your project in the `package.json` with this addition:
 `"build:element": "ng build --prod --output-hashing none && node build-script.js"`
 
-#### Generate 
-Generate the end result of the compiled code with the following command:
+#### Export Custom Element
+Generate the concatenated JS file containing your application as a custom element with:
 `npm run build:element`
-This creates a concatenated JS file containing your application as a custom element. This file is located in the /dist folder of your project named as defined above.
+This file is located in the /dist folder of your project named as defined above.
 
 
 # MicroApplication Configuration

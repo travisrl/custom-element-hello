@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hello-world-widget2": {
+    "hello-world-widget": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -23,7 +23,7 @@
                 "externals": "replace"
               }
             },
-            "outputPath": "dist/hello-world-widget2",
+            "outputPath": "dist/hello-world-widget",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,18 +69,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "hello-world-widget2:build"
+            "browserTarget": "hello-world-widget:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "hello-world-widget2:build:production"
+              "browserTarget": "hello-world-widget:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hello-world-widget2:build"
+            "browserTarget": "hello-world-widget:build"
           }
         },
         "test": {
@@ -115,7 +115,7 @@
         }
       }
     },
-    "hello-world-widget2-e2e": {
+    "hello-world-widget-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -124,11 +124,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "hello-world-widget2:serve"
+            "devServerTarget": "hello-world-widget:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "hello-world-widget2:serve:production"
+              "devServerTarget": "hello-world-widget:serve:production"
             }
           }
         },
@@ -144,5 +144,5 @@
       }
     }
   },
-  "defaultProject": "hello-world-widget2"
+  "defaultProject": "hello-world-widget"
 }

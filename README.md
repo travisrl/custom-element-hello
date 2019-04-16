@@ -130,7 +130,7 @@ MicroApplications and widgets are uploaded to OpenDash360 via MicroApp Deploymen
 
 ## Define MicroApp.json
 Create a manifest following the sample JSON below:
-```javascript
+```json
 "title":"Hello World Widget {
     "app": {
         "tag": "custom-app",

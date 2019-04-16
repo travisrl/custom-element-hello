@@ -24,6 +24,9 @@ Then import `createCustomElement` from the module (in our case app.module.ts):
 
 `import {createCustomElement} from '@angular/elements';`
 
+Install Angular Builders Custom Webpack
+`npm i -D @angular-builders/custom-webpack`
+
 ### Custom Build Script
 Later in the project we use these to optimize the rendered output:
 
@@ -33,7 +36,7 @@ Later in the project we use these to optimize the rendered output:
 Angular needs any components you want to be created dynamically to be declared in the module's entryComponents array.
 
 ### entryComponents Declaration
-Add your root component to this array, declaring it if necessary. Also remove the component from `bootstrap`:
+In your module file, add your root component to this array and declare if necessary. Also empty `bootstrap` as shown:
 ```javascript
 import { createCustomElement } from '@angular/elements';
 import { AppComponent } from './app.component';
@@ -72,7 +75,7 @@ Inside your project's `angular.json` find where your builder is defined. Replace
 ```javascript
 "architect": {
   "build": {
-    "builder": "@angular-builders/custom-webpack-browser",
+    "builder": "@angular-builders/custom-webpack:browser",
     "options": {
       "customWebpackConfig": {
         "path": "./extra-webpack.config.js",
@@ -80,10 +83,12 @@ Inside your project's `angular.json` find where your builder is defined. Replace
           "externals": "replace"
         }
       },
+      ...
     }
   }
 }
 ```
+Only add the above to the your builder; do not replace it entirely.
 
 ### Create Custom webpackJsonp
 This `extra-webpack.config.js` file we referenced above will provide a custom definition for the webpackJsonp variable. In the same directory as your `angular.json`, create a new file named `extra-webpack.config.js` with these contents:
@@ -116,6 +121,15 @@ const concat = require('concat');
 })()
 ```
 *Replace references to `your-app-name` shown above with your app.*
+
+#### Update package.json
+Add the build script to your project in the `package.json` by including this line:
+`"build:element": "ng build --prod --output-hashing none && node build-script.js"`
+
+#### Generate 
+Generate the end result of the compiled code with the following command:
+`npm run build:element`
+This creates a concatenated JS file containing your application as a custom element. This file is located in the /dist folder of your project named as defined above.
 
 
 # MicroApplication Configuration

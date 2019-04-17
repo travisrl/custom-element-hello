@@ -53,7 +53,7 @@ import { Injector } from '@angular/core';
 export class AppModule {
   constructor(private injector: Injector) {
     if (!customElements.get('hello-world-widget')) {
-      const helloWorldElement = >createCustomElement(AppComponent, {injector});
+      const helloWorldElement = createCustomElement(AppComponent, {injector});
       customElements.define('hello-world-widget', helloWorldElement);
     }
   }
@@ -63,7 +63,7 @@ export class AppModule {
 *Replace mentions of `hello-world-widget` to your application*
 
 #### Update Project Builder
-In your `angular.json` replace the default builder with a custom webpack builder such as:
+In your `angular.json` add the custom webpack builder by adding the `builder` and `options` below:
 ```javascript
 "architect": {
   "build": {

@@ -83,6 +83,7 @@ In your `angular.json` add the custom webpack builder by adding the `builder` an
 *Only add the above to the your builder; do not replace it entirely.*
 
 ### Create Custom webpackJsonp
+*Each project must have a unique custom webpackJsonp defined.*
 Create a file named `extra-webpack.config.js` in the same directory as your `angular.json` with:
 ```javascript
 module.exports = {
@@ -124,6 +125,13 @@ Generate the concatenated JS file containing your application as a custom elemen
 `npm run build:element`
 
 This file is located in the /dist folder of your project named as defined above.
+
+## End Result
+The end provided result should be a single concatenated JS file containing all of your project. This should be capable of being embedded on a page with your defined tag.
+
+In the example above, our end result is `hello-world-widget.js` in the /elements folder above.
+
+Our app may be embedded on a page with `<hello-world-widget></hello-world-widget>`
 
 # Create MicroApplication
 MicroApplications and widgets are uploaded to OpenDash360 via MicroApp Deployment. Administrators must then approve your app before it's active.

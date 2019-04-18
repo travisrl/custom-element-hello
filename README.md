@@ -8,6 +8,7 @@ For our example we created a basic Angular-driven Hello World app using Google's
 
 Your application should use relative paths for any assets to be self contained.
 
+
 # Create Custom Element
 Once our application is ready, we need to create an Angular Custom Element. We'll walk through exporting your project in these steps:
 * Install Dependencies
@@ -158,4 +159,7 @@ Create a manifest following the sample JSON below:
     ]
 }
 ```
-The end result project with manifest above should then be deployed to the file system.
+## Deployment
+The end result should be a single JS file concatenated and self contained, defined as a custom element with a unique MicroApp.json packaged.
+
+This is then deployed to the file system and approved by an administrator for use in the realm.

@@ -6,6 +6,8 @@ This project creates an Angular-driven Hello World application packaged as an An
 # Application Example
 For our example we created a basic Angular-driven Hello World app using Google's Material Design components. Review `/src/app/app.component.html` for markup or check out https://material.angular.io.
 
+Your application should use relative paths for any assets to be self contained.
+
 # Create Custom Element
 Once our application is ready, we need to create an Angular Custom Element. We'll walk through exporting your project in these steps:
 * Install Dependencies
@@ -15,10 +17,6 @@ Once our application is ready, we need to create an Angular Custom Element. We'l
 ## Install Dependencies
 Install Angular Elements:
 `npm install @angular/elements`
-
-Then import `createCustomElement` from the module (in our case `app.module.ts`):
-
-`import {createCustomElement} from '@angular/elements';`
 
 Install Angular Builders Custom Webpack:
 `npm i -D @angular-builders/custom-webpack`
@@ -32,7 +30,7 @@ Install optimization packages:
 ## Export Component
 
 ### entryComponents Declaration
-In our module file, we add our root component and clear `bootstrap` as shown:
+In our module file, we import custom elements and add our root component and clear `bootstrap` as shown:
 ```javascript
 import { createCustomElement } from '@angular/elements';
 import { AppComponent } from './app.component';
@@ -63,7 +61,7 @@ export class AppModule {
 *Replace mentions of `hello-world-widget` to your application*
 
 #### Update Project Builder
-In your `angular.json` add the custom webpack builder by adding the `builder` and `options` below:
+In `angular.json` we add the custom webpack builder by adding the `builder` and `options` below:
 ```javascript
 "architect": {
   "build": {
@@ -76,15 +74,12 @@ In your `angular.json` add the custom webpack builder by adding the `builder` an
         }
       },
       ...
-    }
-  }
-}
 ```
 *Only add the above to the your builder; do not replace it entirely.*
 
 ### Create Custom webpackJsonp
-*Each project must have a unique custom webpackJsonp defined.*
-Create a file named `extra-webpack.config.js` in the same directory as your `angular.json` with:
+**Each project must have a unique custom webpackJsonp defined.**
+Create `extra-webpack.config.js` in the same directory as `angular.json` with:
 ```javascript
 module.exports = {
   output: {
